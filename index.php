@@ -1,7 +1,5 @@
 <?php
 
-// *I NEED TO FIND AND LOAD THE CREATION CODE ON THE ROOMS
-
 // display arrays and objects in a human readable format
 function prnt($val)
 {

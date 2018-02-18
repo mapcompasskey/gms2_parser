@@ -2,10 +2,8 @@
 *.DS_Store
 *.sass-cache*
 *.bat
-*.bat
 *.lnk
 .ftpquota
 config.rb
 git.txt
-notes.txt
-shortcut.lnk
+notes.txts
