@@ -65,6 +65,10 @@ if ( ! $gms2_parser->initialize())
             left: 0;
         }
         
+        p {
+            margin-bottom: 1em;
+        }
+        
         ul {
             list-style-type: none;
             margin-bottom: 1em;
@@ -115,17 +119,17 @@ if ( ! $gms2_parser->initialize())
             padding-bottom: 100%;
         }
         
-        .report-wrapper {
+        .toggle-notes {
             padding: 10px;
             margin-bottom: 2em;
             border: 1px solid #999999;
             background-color: #f0f0f0;
         }
-        .report-container {
+        .toggle-notes-container {
             display: none;
             margin-top: 1em;
         }
-        .report-wrapper-active .report-container {
+        .toggle-notes-active .toggle-notes-container {
             display: block;
         }
         
@@ -191,10 +195,34 @@ if ( ! $gms2_parser->initialize())
             <button class="return-to-top" onclick="document.documentElement.scrollTop = 0;">&uarr;</button>
             
             <?php // GMS2 Parser report ?>
-            <div class="report-wrapper">
+            <div class="toggle-notes">
                 <button>View Report</button>
-                <div class="report-container">
+                <div class="toggle-notes-container">
                     <?php prnt($gms2_parser->report); ?>
+                </div>
+            </div>
+            
+            <?php // JSDoc notes ?>
+            <div class="toggle-notes">
+                <button>View JSDoc notes</button>
+                <div class="toggle-notes-container">
+                    <p>
+                        <a href="https://docs2.yoyogames.com/source/_build/1_overview/3_additional_information/jsdoc.html" target="_blank">
+                            https://docs2.yoyogames.com/source/_build/1_overview/3_additional_information/jsdoc.html
+                        </a>
+                    </p>
+                    <pre>
+/// @function is_same_object(id, object)
+/// @description Compare an instance object index with that of another.
+/// @param {real} instance_id The unique instance ID value of the instance to check.
+/// @param {real} object_index The object index to be checked against.
+
+if argument0.object_index == argument1
+{
+    return true;
+}
+return false;
+                    </pre>
                 </div>
             </div>
             
@@ -215,14 +243,18 @@ if ( ! $gms2_parser->initialize())
     
     <script>
     
-        // toggle the report on button click
-        var reportWrapper = document.getElementsByClassName('report-wrapper');
-        if (reportWrapper.length) {
-            var reportButton = reportWrapper[0].getElementsByTagName('button');
-            if (reportButton.length) {
-                reportButton[0].onclick = function() {
-                    reportWrapper[0].classList.toggle('report-wrapper-active');
-                };
+        // toggle the hidden elements on button click
+        var toggleNotes = document.getElementsByClassName('toggle-notes');
+        if (toggleNotes.length) {
+            for (var i = 0; i < toggleNotes.length; i++) {
+                var toggleNotesButton = toggleNotes[i].getElementsByTagName('button');
+                if (toggleNotesButton.length) {
+                    (function(i) {
+                        toggleNotesButton[0].onclick = function(evt) {
+                            toggleNotes[i].classList.toggle('toggle-notes-active');
+                        };
+                    })(i);
+                }
             }
         }
         
