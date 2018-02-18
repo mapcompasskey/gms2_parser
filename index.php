@@ -226,6 +226,20 @@ return false;
                 </div>
             </div>
             
+            <?php // keyboard shortcuts ?>
+            <div class="toggle-notes">
+                <button>View Keyboard Shortcuts</button>
+                <div class="toggle-notes-container">
+                    <p>
+                        <a href="https://docs2.yoyogames.com/source/_build/1_overview/2_quick_start/8_shortcuts.html" target="_blank">
+                            https://docs2.yoyogames.com/source/_build/1_overview/2_quick_start/8_shortcuts.html
+                        </a>
+                    </p>
+                    <pre>CTRL + K, Comment out the selected line (or lines) of text</pre>
+                    <pre>CTRL + SHIFT + K, Uncomment out the selected line (or lines) of text</pre>
+                </div>
+            </div>
+            
             <?php // Scripts ?>
             <?php $files = $gms2_parser->scripts_resource_files; ?>
             <?php foreach ($files as $file) : ?>
