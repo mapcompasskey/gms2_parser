@@ -17,7 +17,7 @@ class GMS2_Parser
     public $rooms_resource_tree = array();
     public $rooms_resource_files = array();
     
-    private $_gms2_directory = 'C:/Users/MapCompassKey/MapCompassKey/Game Maker 2/';
+    private $_gms2_directory = 'C:/Users/MapCompassKey/MapCompassKey/Game Maker 2/Version 2.2/';
     private $_project_directory = 'Lost Wizard/';
     private $_base_directory = null;
     
@@ -824,13 +824,13 @@ class GMS2_Parser
         
         if ( ! is_file($file))
         {
-            echo sprintf('file was not found: %s', $file);
+            echo sprintf('<pre>file was not found: %s</pre>', $file);
             return;
         }
         
         if ( ! $contents = file_get_contents($file))
         {
-            echo sprintf('could not get file contents: %s', $file);
+            echo sprintf('<pre>could not get file contents: %s<pre>', $file);
             return;
         }
         
